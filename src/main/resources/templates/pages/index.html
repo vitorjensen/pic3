@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -216,7 +216,7 @@
                         <!-- small box -->
                         <div class="small-box bg-info">
                             <div class="inner">
-                                <h3>150</h3>
+                                <h3 th:text="${totalItens}">0</h3>
 
                                 <p>Total de itens</p>
                             </div>
@@ -232,7 +232,7 @@
                         <!-- small box -->
                         <div class="small-box bg-success">
                             <div class="inner">
-                                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                                <h3 th:text="${alugueisAtivos}"><sup style="font-size: 20px">%</sup></h3>
 
                                 <p>Aluguéis Ativos</p>
                             </div>
