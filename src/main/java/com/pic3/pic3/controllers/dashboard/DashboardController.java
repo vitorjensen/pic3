@@ -24,6 +24,7 @@ public class DashboardController {
 
         model.addAttribute("totalItens", totalItens);
         model.addAttribute("alugueisAtivos", alugueisAtivos);
+        model.addAttribute("totalFornecedores", totalFornecedores);
         model.addAttribute("receitaMensal", receitaMensal);
 
         return "pages/index";
