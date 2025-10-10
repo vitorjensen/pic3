@@ -1,27 +1,31 @@
 package com.pic3.pic3.service;
 
+import com.pic3.pic3.dto.AluguelMesDTO;
 import com.pic3.pic3.repository.ChartRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.LinkedHashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class ChartService {
-private final ChartRepository chartRepository;
-public ChartService(ChartRepository chartRepository){
-    this.chartRepository = chartRepository;
-}
-public Map<String, Double> getAlugueisPorMes(){
-    List<Object[]> results = chartRepository.getAlugueisPorMes();
-    Map<String, Double> mapa = new LinkedHashMap<>();
-    for (Object[] row : results)
-    {
-        String mes = (String) row[0];
-        Double total = ((Number) row[1].doubleValue());
-        mapa.put(mes, total)
+
+    private final ChartRepository chartRepository;
+
+    public ChartService(ChartRepository chartRepository) {
+        this.chartRepository = chartRepository;
     }
-    return mapa;
-}
+
+    public List<AluguelMesDTO> getAlugueisPorMes() {
+        List<Object[]> resultados = chartRepository.getAlugueisPorMes();
+
+        List<AluguelMesDTO> lista = new ArrayList<>();
+        for (Object[] row : resultados) {
+            Integer mes = ((Number) row[0]).intValue();
+            Long total = ((Number) row[1]).longValue();
+            lista.add(new AluguelMesDTO(mes, total));
+        }
+
+        return lista;
+    }
 }

@@ -434,13 +434,24 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
 
+
+
+<script th:inline="javascript">
+    // Converte a lista Java em array JS
+    let dadosGrafico = /*[[${dadosGrafico}]]*/ [];
+</script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const ctx = document.getElementById('rentals-line-chart').getContext('2d');
 
-        // Exemplo de labels e dados estáticos (depois você substituirá por dados do Spring)
-        const labels = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul"];
-        const data = [5, 9, 3, 7, 12, 8, 15];
+        // Converte números do mês (1-12) para nomes
+        const labels = dadosGrafico.map(item => {
+            const nomesMeses = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
+            return nomesMeses[item.mes - 1];
+        });
+
+        // Valores (quantidade ou soma de aluguel)
+        const data = dadosGrafico.map(item => item.total);
 
         new Chart(ctx, {
             type: 'line',
@@ -475,19 +486,14 @@
                     intersect: false
                 },
                 scales: {
-                    x: {
-                        grid: {
-                            display: false
-                        }
-                    },
-                    y: {
-                        beginAtZero: true
-                    }
+                    x: { grid: { display: false } },
+                    y: { beginAtZero: true }
                 }
             }
         });
     });
 </script>
+
 
 </body>
 </html>

@@ -1,33 +1,32 @@
 package com.pic3.pic3.controllers.dashboard;
 
-import org.springframework.ui.Model;
 import com.pic3.pic3.service.DashboardService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.pic3.pic3.service.ChartService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-
 public class DashboardController {
-    @Autowired
-    private final DashboardService dashboardService;
-    public  DashboardController(DashboardService dashboardService)
-    {
-        this.dashboardService = dashboardService;
-    }
-    @GetMapping("/")
-    public String index(Model model){
-        Long totalItens = dashboardService.getTotalItens();
-        Long alugueisAtivos = dashboardService.getAlugueisAtivos();
-        Long totalFornecedores = dashboardService.getTotalFornecedores();
-        Double receitaMensal = dashboardService.getReceitaMensal();
 
-        model.addAttribute("totalItens", totalItens);
-        model.addAttribute("alugueisAtivos", alugueisAtivos);
-        model.addAttribute("totalFornecedores", totalFornecedores);
-        model.addAttribute("receitaMensal", receitaMensal);
+    private final DashboardService dashboardService;
+    private final ChartService chartService;
+
+    public DashboardController(DashboardService dashboardService, ChartService chartService) {
+        this.dashboardService = dashboardService;
+        this.chartService = chartService;
+    }
+
+    @GetMapping("/dashboard")
+    public String index(Model model) {
+        model.addAttribute("totalItens", dashboardService.getTotalItens());
+        model.addAttribute("alugueisAtivos", dashboardService.getAlugueisAtivos());
+        model.addAttribute("totalFornecedores", dashboardService.getTotalFornecedores());
+        model.addAttribute("receitaMensal", dashboardService.getReceitaMensal());
+
+        // Dados para o gráfico
+        model.addAttribute("dadosGrafico", chartService.getAlugueisPorMes());
 
         return "pages/index";
     }
-
 }
