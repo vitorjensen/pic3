@@ -12,7 +12,7 @@ public class ChartController {
     public ChartController(ChartService chartService){
         this.chartService = chartService;
     }
-    @GetMapping("/")
+    @GetMapping("/dashboard")
     public String mostrarGrafico(Model model) {
         // Busca os dados do serviço
         model.addAttribute("dadosGrafico", chartService.getAlugueisPorMes());

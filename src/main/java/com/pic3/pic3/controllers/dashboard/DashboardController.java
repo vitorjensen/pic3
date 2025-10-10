@@ -17,12 +17,12 @@ public class DashboardController {
         this.chartService = chartService;
     }
 
-    @GetMapping("/dashboard")
+    @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("totalItens", dashboardService.getTotalItens());
         model.addAttribute("alugueisAtivos", dashboardService.getAlugueisAtivos());
         model.addAttribute("totalFornecedores", dashboardService.getTotalFornecedores());
-        model.addAttribute("receitaMensal", dashboardService.getReceitaMensal());
+        model.addAttribute("totalCliente", dashboardService.getTotalCliente());
 
         // Dados para o gráfico
         model.addAttribute("dadosGrafico", chartService.getAlugueisPorMes());

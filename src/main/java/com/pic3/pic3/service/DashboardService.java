@@ -24,7 +24,7 @@ public class DashboardService {
         return dashboardRepository.countFornecedores();
     }
 
-    public Double getReceitaMensal() {
-        return dashboardRepository.receitaMensal();
+    public Long getTotalCliente() {
+        return dashboardRepository.countCliente();
     }
 }

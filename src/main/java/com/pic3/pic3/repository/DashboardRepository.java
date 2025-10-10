@@ -22,13 +22,8 @@ public class DashboardRepository {
         return ((Number) em.createNativeQuery("SELECT COUNT(*) FROM tb_fornecedor").getSingleResult()).longValue();
     }
 
-    public Double receitaMensal() {
-        return ((Number) em.createNativeQuery("""
-            SELECT COALESCE(SUM(alu_valor), 0)
-            FROM tb_aluguel 
-            WHERE MONTH(alu_data_inicial) = MONTH(CURRENT_DATE()) 
-              AND YEAR(alu_data_inicial) = YEAR(CURRENT_DATE())
-        """).getSingleResult()).doubleValue();
+    public Long countCliente() {
+        return ((Number) em.createNativeQuery("SELECT COUNT(*) FROM tb_cliente").getSingleResult()).longValue();
     }
 
 }
