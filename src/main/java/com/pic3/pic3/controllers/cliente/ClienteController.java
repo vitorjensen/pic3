@@ -19,7 +19,8 @@ public class ClienteController {
     @GetMapping
     public String listarClientes(Model model)
     {
-        model.addAttribute("clientes", clienteService.findAll());
-        return "templates/cliente";
+        model.addAttribute("clientes", clienteService.listarTodos());
+
+        return "pages/cliente";
     }
 }
