@@ -20,6 +20,6 @@ public class ClienteController {
     public String listarClientes(Model model)
     {
         model.addAttribute("clientes", clienteService.findAll());
-        return "cliente/index";
+        return "templates/cliente";
     }
 }
