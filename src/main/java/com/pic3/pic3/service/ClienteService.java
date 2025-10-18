@@ -26,10 +26,12 @@ public class ClienteService {
 
     public Optional<Cliente> buscarPorId(Integer id)
     {
+
         return repo.findById(id);
     }
     public Cliente salvar(Cliente cliente)
     {
+
         return repo.save(cliente);
     }
     public Cliente atualizar(Integer id, Cliente clienteAtualizado)
@@ -50,6 +52,7 @@ public class ClienteService {
                 .orElseThrow(() -> new RuntimeException("Cliente não encontrado com ID " + id));
     }
     public void deletar(Integer id) {
+
         repo.deleteById(id);
     }
 
