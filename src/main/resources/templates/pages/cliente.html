@@ -260,8 +260,25 @@
                           <td th:text="${cliente.estado}">A</td>
                           <td th:text="${cliente.complemento}">A</td>
                           <td>
-                              <i class="fa fa-pencil-square-o"></i>
-                              <i class="fa fa-remove" style="color:red"></i>
+                              <a href="#" class="btn btn-warning btn-sm btn-editar"
+                                 th:data-id="${cliente.id}"
+                                 th:data-nome="${cliente.nome}"
+                                 th:data-telefone="${cliente.telefone}"
+                                 th:data-cpf="${cliente.cpf}"
+                                 th:data-rua="${cliente.rua}"
+                                 th:data-numero="${cliente.numero}"
+                                 th:data-bairro="${cliente.bairro}"
+                                 th:data-cidade="${cliente.cidade}"
+                                 th:data-estado="${cliente.estado}"
+                                 th:data-complemento="${cliente.complemento}">
+                                  <i class="fa fa-pencil-square-o"></i>
+                              </a>
+
+                              <a th:href="@{'/cliente/deletar/' + ${cliente.id}}"
+                                 class="text-danger ml-2"
+                                 onclick="return confirm('Tem certeza que deseja excluir este cliente?');">
+                                  <i class="fa fa-trash"></i>
+                              </a>
                           </td>
                       </tr>
                       </tbody>
@@ -318,29 +335,30 @@
                               <div class="row">
                                   <!-- Coluna 1 -->
                                   <div class="col-md-6">
+                                      <input type="hidden" name="id" id="idCliente">
                                       <div class="form-group">
                                           <label>Código</label>
-                                          <input type="text" class="form-control" name="id" readonly>
+                                          <input type="text" class="form-control" id="clienteID" name="id" readonly>
                                       </div>
 
                                       <div class="form-group">
                                           <label>Nome</label>
-                                          <input type="text" class="form-control" name="nome" required>
+                                          <input type="text" class="form-control" id="nomeCliente" name="nome" required>
                                       </div>
 
                                       <div class="form-group">
                                           <label>Telefone</label>
-                                          <input type="text" class="form-control" name="telefone" required>
+                                          <input type="text" class="form-control" id="telefoneCliente" name="telefone" required>
                                       </div>
 
                                       <div class="form-group">
                                           <label>CPF</label>
-                                          <input type="text" class="form-control" name="cpf" required>
+                                          <input type="text" class="form-control" id="cpfCliente" name="cpf" required>
                                       </div>
 
                                       <div class="form-group">
                                           <label>Rua</label>
-                                          <input type="text" class="form-control" name="rua">
+                                          <input type="text" class="form-control" id="ruaCliente" name="rua">
                                       </div>
                                   </div>
 
@@ -348,27 +366,27 @@
                                   <div class="col-md-6">
                                       <div class="form-group">
                                           <label>Número</label>
-                                          <input type="text" class="form-control" name="numero">
+                                          <input type="text" class="form-control" id="numeroCliente" name="numero">
                                       </div>
 
                                       <div class="form-group">
                                           <label>Bairro</label>
-                                          <input type="text" class="form-control" name="bairro">
+                                          <input type="text" class="form-control" id="numeroBairro" name="bairro">
                                       </div>
 
                                       <div class="form-group">
                                           <label>Cidade</label>
-                                          <input type="text" class="form-control" name="cidade">
+                                          <input type="text" class="form-control" id="cidadeCliente" name="cidade">
                                       </div>
 
                                       <div class="form-group">
                                           <label>Estado</label>
-                                          <input type="text" class="form-control" name="estado">
+                                          <input type="text" class="form-control" id="cidadeEstado" name="estado">
                                       </div>
 
                                       <div class="form-group">
                                           <label>Complemento</label>
-                                          <input type="text" class="form-control" name="complemento">
+                                          <input type="text" class="form-control" id="cidadeComplemento" name="complemento">
                                       </div>
                                   </div>
                               </div>
@@ -456,6 +474,49 @@ $('#example2').DataTable({
 
 <!-- Modal Cadastro Cliente -->
 
+<!-- Modal Editar Cliente -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const modal = $('#modalCliente');
+
+        // Quando clicar em "Novo Cliente"
+        document.getElementById("btnNovoCliente").addEventListener("click", function () {
+            modal.find('.modal-title').text('Cadastrar Cliente');
+            modal.find('form').attr('action', '/cliente/salvar');
+            modal.find('#idCliente').val('');
+            modal.find('#nomeCliente').val('');
+            modal.find('#telefoneCliente').val('');
+            modal.find('#cpfCliente').val('');
+            modal.find('#ruaCliente').val('');
+            modal.find('#numeroCliente').val('');
+            modal.find('#bairroCliente').val('');
+            modal.find('#cidadeCliente').val('');
+            modal.find('#estadoCliente').val('');
+            modal.find('#complementoCliente').val('');
+            modal.modal('show');
+        });
+
+        // Quando clicar em "Editar"
+        document.querySelectorAll('.btn-editar').forEach(btn => {
+            btn.addEventListener('click', function () {
+                modal.find('.modal-title').text('Editar Cliente');
+                modal.find('form').attr('action', '/cliente/editar');
+                modal.find('#idCliente').val(this.getAttribute('data-id'));
+                modal.find('#nomeCliente').val(this.getAttribute('data-nome'));
+                modal.find('#telefoneCliente').val(this.getAttribute('data-telefone'));
+                modal.find('#cpfCliente').val(this.getAttribute('data-cpf'));
+                modal.find('#ruaCliente').val(this.getAttribute('data-rua'));
+                modal.find('#numeroCliente').val(this.getAttribute('data-numero'));
+                modal.find('#bairroCliente').val(this.getAttribute('data-bairro'));
+                modal.find('#cidadeCliente').val(this.getAttribute('data-cidade'));
+                modal.find('#estadoCliente').val(this.getAttribute('data-estado'));
+                modal.find('#complementoCliente').val(this.getAttribute('data-complemento'));
+                modal.modal('show');
+            });
+        });
+    });
+
+</script>
 
 </body>
 </html>
