@@ -32,7 +32,7 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <!-- <img class="animation__shake" src="/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60"> -->
   </div>
 
   <!-- Navbar -->
@@ -260,25 +260,25 @@
                           <td th:text="${cliente.estado}">A</td>
                           <td th:text="${cliente.complemento}">A</td>
                           <td>
-                              <a href="#" class="btn btn-warning btn-sm btn-editar"
-                                 th:data-id="${cliente.id}"
-                                 th:data-nome="${cliente.nome}"
-                                 th:data-telefone="${cliente.telefone}"
-                                 th:data-cpf="${cliente.cpf}"
-                                 th:data-rua="${cliente.rua}"
-                                 th:data-numero="${cliente.numero}"
-                                 th:data-bairro="${cliente.bairro}"
-                                 th:data-cidade="${cliente.cidade}"
-                                 th:data-estado="${cliente.estado}"
-                                 th:data-complemento="${cliente.complemento}">
-                                  <i class="fa fa-pencil-square-o"></i>
-                              </a>
+                            <a href="#" class="text-warning ml-2 btn-editar"
+                            th:data-id="${cliente.id}"
+                            th:data-nome="${cliente.nome}"
+                            th:data-telefone="${cliente.telefone}"
+                            th:data-cpf="${cliente.cpf}"
+                            th:data-rua="${cliente.rua}"
+                            th:data-numero="${cliente.numero}"
+                            th:data-bairro="${cliente.bairro}"
+                            th:data-cidade="${cliente.cidade}"
+                            th:data-estado="${cliente.estado}"
+                            th:data-complemento="${cliente.complemento}">
+                            <i class="fa fa-pencil-square-o"></i>
+                            </a>
 
-                              <a th:href="@{'/cliente/deletar/' + ${cliente.id}}"
-                                 class="text-danger ml-2"
-                                 onclick="return confirm('Tem certeza que deseja excluir este cliente?');">
-                                  <i class="fa fa-trash"></i>
-                              </a>
+                            <a th:href="@{'/cliente/deletar/' + ${cliente.id}}"
+                            class="text-danger ml-2"
+                            onclick="return confirm('Tem certeza que deseja excluir este cliente?');">
+                            <i class="fa fa-trash"></i>
+                            </a>
                           </td>
                       </tr>
                       </tbody>
@@ -335,7 +335,6 @@
                               <div class="row">
                                   <!-- Coluna 1 -->
                                   <div class="col-md-6">
-                                      <input type="hidden" name="id" id="idCliente">
                                       <div class="form-group">
                                           <label>Código</label>
                                           <input type="text" class="form-control" id="clienteID" name="id" readonly>
@@ -457,66 +456,44 @@
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
-<script>
-$(function (){
-$('#example2').DataTable({
-"responsive": true,
-"lengthChange": false,
-"pageLength": 7,
-"autoWidth": false,
-"paging": true,
-"searching": true,
-"ordering": true,
-"info": true
-});
-});
-</script>
+
 
 <!-- Modal Cadastro Cliente -->
 
 <!-- Modal Editar Cliente -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const modal = $('#modalCliente');
+        const botoesEditar = document.querySelectorAll(".btn-editar");
 
-        // Quando clicar em "Novo Cliente"
-        document.getElementById("btnNovoCliente").addEventListener("click", function () {
-            modal.find('.modal-title').text('Cadastrar Cliente');
-            modal.find('form').attr('action', '/cliente/salvar');
-            modal.find('#idCliente').val('');
-            modal.find('#nomeCliente').val('');
-            modal.find('#telefoneCliente').val('');
-            modal.find('#cpfCliente').val('');
-            modal.find('#ruaCliente').val('');
-            modal.find('#numeroCliente').val('');
-            modal.find('#bairroCliente').val('');
-            modal.find('#cidadeCliente').val('');
-            modal.find('#estadoCliente').val('');
-            modal.find('#complementoCliente').val('');
-            modal.modal('show');
-        });
+        botoesEditar.forEach(botao => {
+            botao.addEventListener("click", function () {
+                const id = this.dataset.id;
+                const nome = this.dataset.nome;
+                const telefone = this.dataset.telefone;
+                const cpf = this.dataset.cpf;
+                const rua = this.dataset.rua;
+                const numero = this.dataset.numero;
+                const bairro = this.dataset.bairro;
+                const cidade = this.dataset.cidade;
+                const estado = this.dataset.estado;
+                const complemento = this.dataset.complemento;
 
-        // Quando clicar em "Editar"
-        document.querySelectorAll('.btn-editar').forEach(btn => {
-            btn.addEventListener('click', function () {
-                modal.find('.modal-title').text('Editar Cliente');
-                modal.find('form').attr('action', '/cliente/editar');
-                modal.find('#idCliente').val(this.getAttribute('data-id'));
-                modal.find('#nomeCliente').val(this.getAttribute('data-nome'));
-                modal.find('#telefoneCliente').val(this.getAttribute('data-telefone'));
-                modal.find('#cpfCliente').val(this.getAttribute('data-cpf'));
-                modal.find('#ruaCliente').val(this.getAttribute('data-rua'));
-                modal.find('#numeroCliente').val(this.getAttribute('data-numero'));
-                modal.find('#bairroCliente').val(this.getAttribute('data-bairro'));
-                modal.find('#cidadeCliente').val(this.getAttribute('data-cidade'));
-                modal.find('#estadoCliente').val(this.getAttribute('data-estado'));
-                modal.find('#complementoCliente').val(this.getAttribute('data-complemento'));
-                modal.modal('show');
+                // Preenche os campos do modal
+                document.querySelector("#modalCliente input[name='id']").value = id;
+                document.querySelector("#modalCliente input[name='nome']").value = nome;
+                document.querySelector("#modalCliente input[name='telefone']").value = telefone;
+                document.querySelector("#modalCliente input[name='cpf']").value = cpf;
+                document.querySelector("#modalCliente input[name='rua']").value = rua;
+                document.querySelector("#modalCliente input[name='numero']").value = numero;
+                document.querySelector("#modalCliente input[name='bairro']").value = bairro;
+                document.querySelector("#modalCliente input[name='cidade']").value = cidade;
+                document.querySelector("#modalCliente input[name='estado']").value = estado;
+                document.querySelector("#modalCliente input[name='complemento']").value = complemento;
+
+                $("#modalCliente").modal("show");
             });
         });
     });
-
 </script>
-
 </body>
 </html>
