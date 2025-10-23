@@ -235,30 +235,38 @@
                       <thead>
                       <tr>
                           <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Código</th>
-                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Nome</th>
-                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Telefone</th>
-                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">CPF</th>
-                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Rua</th>
-                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Número</th>
-                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Bairro</th>
-                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Cidade</th>
-                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Estado</th>
-                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Complemento</th>
+                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Cliente ID</th>
+                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Quantidade</th>
+                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Data inicial</th>
+                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Data final</th>
+                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Produto ID</th>
+                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Valor</th>
+                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Valor sinal</th>
+                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Resta pagar</th>
+                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Pago total</th>
+                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Pagamento</th>
+                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Vendedor</th>
+                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Observação</th>
+                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Status</th>
                           <th>Ações</th>
                       </tr>
                       </thead>
                       <tbody>
-                      <tr th:each="cliente : ${clientes}">
-                          <td th:text="${cliente.id}"></td>
-                          <td th:text="${cliente.nome}"></td>
-                          <td th:text="${cliente.telefone}"></td>
-                          <td th:text="${cliente.cpf}"></td>
-                          <td th:text="${cliente.rua}">A</td>
-                          <td th:text="${cliente.numero}">A</td>
-                          <td th:text="${cliente.bairro}">A</td>
-                          <td th:text="${cliente.cidade}">A</td>
-                          <td th:text="${cliente.estado}">A</td>
-                          <td th:text="${cliente.complemento}">A</td>
+                      <tr th:each="aluguel : ${alugueis}">
+                          <td th:text="${aluguel.id}"></td>
+                          <td th:text="${aluguel.clienteCodigo}"></td>
+                          <td th:text="${aluguel.quantidade}"></td>
+                          <td th:text="${aluguel.dataInicial}"></td>
+                          <td th:text="${aluguel.dataFinal}"></td>
+                          <td th:text="${aluguel.produtoCodigo}"></td>
+                          <td th:text="${aluguel.valor}"></td>
+                          <td th:text="${aluguel.valorSinal}"></td>
+                          <td th:text="${aluguel.restaPagar}"></td>
+                          <td th:text="${aluguel.pagoTotal}"></td>
+                          <td th:text="${aluguel.tipoPagamento}"></td>
+                          <td th:text="${aluguel.vendedorNome}"></td>
+                          <td th:text="${aluguel.observacao}"></td>
+                          <td th:text="${aluguel.status}"></td>
                           <td>
                             <a href="#" class="text-warning ml-2 btn-editar"
                             th:data-id="${cliente.id}"
