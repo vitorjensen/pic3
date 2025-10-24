@@ -269,24 +269,28 @@
                           <td th:text="${aluguel.status}"></td>
                           <td>
                             <a href="#" class="text-warning ml-2 btn-editar"
-                            th:data-id="${cliente.id}"
-                            th:data-nome="${cliente.nome}"
-                            th:data-telefone="${cliente.telefone}"
-                            th:data-cpf="${cliente.cpf}"
-                            th:data-rua="${cliente.rua}"
-                            th:data-numero="${cliente.numero}"
-                            th:data-bairro="${cliente.bairro}"
-                            th:data-cidade="${cliente.cidade}"
-                            th:data-estado="${cliente.estado}"
-                            th:data-complemento="${cliente.complemento}">
+                            th:data-id="${aluguel.id}"
+                            th:data-clienteCodigo="${aluguel.clienteCodigo}"
+                            th:data-quantidade="${aluguel.quantidade}"
+                            th:data-dataInicial="${aluguel.dataInicial}"
+                            th:data-dataFinal="${aluguel.dataFinal}"
+                            th:data-produtoCodigo="${aluguel.produtoCodigo}"
+                            th:data-valor="${aluguel.valor}"
+                            th:data-valorSinal="${aluguel.valorSinal}"
+                            th:data-restaPagar="${aluguel.restaPagar}"
+                            th:data-pagoTotal="${aluguel.pagoTotal}"
+                            th:data-tipoPagamento="${aluguel.tipoPagamento}"
+                            th:data-vendedorNome="${aluguel.vendedorNome}"
+                            th:data-observacao="${aluguel.observacao}"
+                            th:data-status="${aluguel.status}">
                             <i class="fa fa-pencil-square-o"></i>
                             </a>
 
-                            <a th:href="@{'/cliente/deletar/' + ${cliente.id}}"
-                            class="text-danger ml-2"
-                            onclick="return confirm('Tem certeza que deseja excluir este cliente?');">
-                            <i class="fa fa-trash"></i>
-                            </a>
+                              <a th:href="@{'/aluguel/deletar/' + ${aluguel.id}}"
+                                 class="text-danger ml-2"
+                                 onclick="return confirm('Tem certeza que deseja excluir este aluguel?');">
+                                  <i class="fa fa-trash"></i>
+                              </a>
                           </td>
                       </tr>
                       </tbody>

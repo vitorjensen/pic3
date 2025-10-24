@@ -21,7 +21,7 @@ public class AluguelController {
     @GetMapping
     public String listarAluguel(Model model)
     {
-        model.addAttribute("aluguel", aluguelService.listarTodos());
+        model.addAttribute("alugueis", aluguelService.listarTodos());
         return "pages/aluguel";
     }
 }
