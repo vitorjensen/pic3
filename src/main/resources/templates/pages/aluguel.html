@@ -27,9 +27,8 @@
   <!-- summernote -->
   <link rel="stylesheet" href="/plugins/summernote/summernote-bs4.min.css">
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini sidebar-collapse layout-fixed">
 <div class="wrapper">
-
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
     <!-- <img class="animation__shake" src="/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60"> -->
@@ -215,7 +214,7 @@
               <div class="card-header">
                   <div class="d-flex justify-content-between align-items-center">
                       <h3 class="card-title">Últimos cadastros:</h3>
-                      <button class="btn btn-primary" data-toggle="modal" data-target="#modalCliente">
+                      <button class="btn btn-primary" data-toggle="modal" data-target="#modalAluguel">
                           <i class="fas fa-plus"></i> Novo Aluguel
                       </button>
                   </div>
@@ -331,75 +330,100 @@
           </div>
         <!-- /.row -->
         <!-- Main row -->
-
-          <div class="modal fade" id="modalCliente" tabindex="-1" role="dialog" aria-labelledby="modalClienteLabel" aria-hidden="true">
+          <div class="modal fade" id="modalAluguel" tabindex="-1" role="dialog" aria-labelledby="modalAluguelLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg" role="document"> <!-- modal-lg = largura maior -->
                   <div class="modal-content">
                       <div class="modal-header">
-                          <h5 class="modal-title">Cadastrar Cliente</h5>
+                          <h5 class="modal-title">Cadastrar Aluguel</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                           </button>
                       </div>
 
-                      <form action="/cliente/salvar" method="post">
+                      <form action="/aluguel/salvar" method="post">
                           <div class="modal-body">
                               <div class="row">
                                   <!-- Coluna 1 -->
                                   <div class="col-md-6">
                                       <div class="form-group">
                                           <label>Código</label>
-                                          <input type="text" class="form-control" id="clienteID" name="id" readonly>
+                                          <input type="text" class="form-control" id="aluguelID" name="id" readonly>
                                       </div>
 
                                       <div class="form-group">
-                                          <label>Nome</label>
-                                          <input type="text" class="form-control" id="nomeCliente" name="nome" required>
+                                          <label>Cliente</label>
+                                          <input type="text" class="form-control" id="clienteCodigo" name="clienteCodigo" required>
                                       </div>
 
                                       <div class="form-group">
-                                          <label>Telefone</label>
-                                          <input type="text" class="form-control" id="telefoneCliente" name="telefone" required>
+                                          <label>Produto</label>
+                                          <input type="text" class="form-control" id="produtoCodigo" name="produtoCodigo" required>
                                       </div>
 
                                       <div class="form-group">
-                                          <label>CPF</label>
-                                          <input type="text" class="form-control" id="cpfCliente" name="cpf" required>
+                                          <label>Quantidade</label>
+                                          <input type="number" class="form-control" id="quantidade" name="quantidade" required>
                                       </div>
 
                                       <div class="form-group">
-                                          <label>Rua</label>
-                                          <input type="text" class="form-control" id="ruaCliente" name="rua">
+                                          <label>Valor Total</label>
+                                          <input type="number" step="0.01" class="form-control" id="valor" name="valor" required>
+                                      </div>
+
+                                      <div class="form-group">
+                                          <label>Valor do Sinal</label>
+                                          <input type="number" step="0.01" class="form-control" id="valorSinal" name="valorSinal">
                                       </div>
                                   </div>
 
                                   <!-- Coluna 2 -->
                                   <div class="col-md-6">
                                       <div class="form-group">
-                                          <label>Número</label>
-                                          <input type="text" class="form-control" id="numeroCliente" name="numero">
+                                          <label>Resta Pagar</label>
+                                          <input type="number" step="0.01" class="form-control" id="restaPagar" name="restaPagar">
                                       </div>
 
                                       <div class="form-group">
-                                          <label>Bairro</label>
-                                          <input type="text" class="form-control" id="numeroBairro" name="bairro">
+                                          <label>Pago Total</label>
+                                          <select class="form-control" id="pagoTotal" name="pagoTotal">
+                                              <option value="Não">Não</option>
+                                              <option value="Sim">Sim</option>
+                                          </select>
                                       </div>
 
                                       <div class="form-group">
-                                          <label>Cidade</label>
-                                          <input type="text" class="form-control" id="cidadeCliente" name="cidade">
+                                          <label>Tipo de Pagamento</label>
+                                          <input type="text" class="form-control" id="tipoPagamento" name="tipoPagamento">
                                       </div>
 
                                       <div class="form-group">
-                                          <label>Estado</label>
-                                          <input type="text" class="form-control" id="cidadeEstado" name="estado">
+                                          <label>Data Inicial</label>
+                                          <input type="date" class="form-control" id="dataInicial" name="dataInicial" required>
                                       </div>
 
                                       <div class="form-group">
-                                          <label>Complemento</label>
-                                          <input type="text" class="form-control" id="cidadeComplemento" name="complemento">
+                                          <label>Data Final</label>
+                                          <input type="date" class="form-control" id="dataFinal" name="dataFinal" required>
+                                      </div>
+
+                                      <div class="form-group">
+                                          <label>Vendedor</label>
+                                          <input type="text" class="form-control" id="vendedorNome" name="vendedorNome">
+                                      </div>
+
+                                      <div class="form-group">
+                                          <label>Status</label>
+                                          <select class="form-control" id="status" name="status">
+                                              <option value="Ativo">Ativo</option>
+                                              <option value="Encerrado">Encerrado</option>
+                                          </select>
                                       </div>
                                   </div>
+                              </div>
+
+                              <div class="form-group">
+                                  <label>Observação</label>
+                                  <textarea class="form-control" id="observacao" name="observacao" rows="2"></textarea>
                               </div>
                           </div>
 
@@ -408,7 +432,6 @@
                               <button type="submit" class="btn btn-primary">Salvar</button>
                           </div>
                       </form>
-
                   </div>
               </div>
           </div>

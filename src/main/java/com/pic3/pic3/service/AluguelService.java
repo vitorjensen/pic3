@@ -8,14 +8,23 @@ import java.util.List;
 
 @Service
 public class AluguelService {
-    private final AluguelRepository repo;
 
-    public AluguelService(AluguelRepository repo)
+    private final AluguelRepository aluguelRepository;
+
+    public AluguelService(AluguelRepository aluguelRepository)
     {
-        this.repo = repo;
+        this.aluguelRepository = aluguelRepository;
     }
     public List<Aluguel> listarTodos()
     {
-        return repo.findAll();
+        return aluguelRepository.findAll();
+    }
+    public Aluguel salvar (Aluguel aluguel)
+    {
+        return aluguelRepository.save(aluguel);
+    }
+    public void deletar(Integer id) {
+
+        aluguelRepository.deleteById(id);
     }
 }

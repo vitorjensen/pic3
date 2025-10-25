@@ -1,17 +1,14 @@
 package com.pic3.pic3.model;
-
+import lombok.Getter;
+import lombok.Setter;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "tb_aluguel")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Aluguel {
 
     @Id
@@ -57,4 +54,119 @@ public class Aluguel {
 
     @Column(name = "alu_qtde")
     private Integer quantidade;
+
+    // --- GETTERS e SETTERS ---
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getClienteCodigo() {
+        return clienteCodigo;
+    }
+
+    public void setClienteCodigo(String clienteCodigo) {
+        this.clienteCodigo = clienteCodigo;
+    }
+
+    public LocalDate getDataInicial() {
+        return dataInicial;
+    }
+
+    public void setDataInicial(LocalDate dataInicial) {
+        this.dataInicial = dataInicial;
+    }
+
+    public LocalDate getDataFinal() {
+        return dataFinal;
+    }
+
+    public void setDataFinal(LocalDate dataFinal) {
+        this.dataFinal = dataFinal;
+    }
+
+    public Integer getProdutoCodigo() {
+        return produtoCodigo;
+    }
+
+    public void setProdutoCodigo(Integer produtoCodigo) {
+        this.produtoCodigo = produtoCodigo;
+    }
+
+    public BigDecimal getValor() {
+        return valor;
+    }
+
+    public void setValor(BigDecimal valor) {
+        this.valor = valor;
+    }
+
+    public BigDecimal getValorSinal() {
+        return valorSinal;
+    }
+
+    public void setValorSinal(BigDecimal valorSinal) {
+        this.valorSinal = valorSinal;
+    }
+
+    public BigDecimal getRestaPagar() {
+        return restaPagar;
+    }
+
+    public void setRestaPagar(BigDecimal restaPagar) {
+        this.restaPagar = restaPagar;
+    }
+
+    public String getPagoTotal() {
+        return pagoTotal;
+    }
+
+    public void setPagoTotal(String pagoTotal) {
+        this.pagoTotal = pagoTotal;
+    }
+
+    public String getTipoPagamento() {
+        return tipoPagamento;
+    }
+
+    public void setTipoPagamento(String tipoPagamento) {
+        this.tipoPagamento = tipoPagamento;
+    }
+
+    public String getVendedorNome() {
+        return vendedorNome;
+    }
+
+    public void setVendedorNome(String vendedorNome) {
+        this.vendedorNome = vendedorNome;
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
+    }
+
 }
