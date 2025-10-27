@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <title>Dashboard</title>
+  <title>Aluguel</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -267,7 +267,7 @@
                           <td th:text="${aluguel.observacao}"></td>
                           <td th:text="${aluguel.status}"></td>
                           <td>
-                            <a href="#" class="text-warning ml-2 btn-editar"
+                            <a href="#" class="text-warning ml-2 btn-editar-aluguel"
                             th:data-id="${aluguel.id}"
                             th:data-clienteCodigo="${aluguel.clienteCodigo}"
                             th:data-quantidade="${aluguel.quantidade}"
@@ -352,27 +352,26 @@
 
                                       <div class="form-group">
                                           <label>Cliente</label>
-                                          <input type="text" class="form-control" id="clienteCodigo" name="clienteCodigo" required>
-                                      </div>
-
-                                      <div class="form-group">
-                                          <label>Produto</label>
-                                          <input type="text" class="form-control" id="produtoCodigo" name="produtoCodigo" required>
+                                          <input type="text" class="form-control" id="clienteId" name="clienteCodigo" required>
                                       </div>
 
                                       <div class="form-group">
                                           <label>Quantidade</label>
-                                          <input type="number" class="form-control" id="quantidade" name="quantidade" required>
+                                          <input type="number" class="form-control" id="qtde" name="quantidade" required>
+                                      </div>
+                                      <div class="form-group">
+                                          <label>Produto</label>
+                                          <input type="text" class="form-control" id="produtoId" name="produtoCodigo" required>
                                       </div>
 
                                       <div class="form-group">
-                                          <label>Valor Total</label>
-                                          <input type="number" step="0.01" class="form-control" id="valor" name="valor" required>
+                                          <label>Valor</label>
+                                          <input type="number" step="0.01" class="form-control" id="valorAluguel" name="valor" required>
                                       </div>
 
                                       <div class="form-group">
-                                          <label>Valor do Sinal</label>
-                                          <input type="number" step="0.01" class="form-control" id="valorSinal" name="valorSinal">
+                                          <label>Valor Sinal</label>
+                                          <input type="number" step="0.01" class="form-control" id="sinal" name="valorSinal">
                                       </div>
                                   </div>
 
@@ -380,12 +379,12 @@
                                   <div class="col-md-6">
                                       <div class="form-group">
                                           <label>Resta Pagar</label>
-                                          <input type="number" step="0.01" class="form-control" id="restaPagar" name="restaPagar">
+                                          <input type="number" step="0.01" class="form-control" id="restaPgto" name="restaPagar">
                                       </div>
 
                                       <div class="form-group">
                                           <label>Pago Total</label>
-                                          <select class="form-control" id="pagoTotal" name="pagoTotal">
+                                          <select class="form-control" id="total" name="pagoTotal">
                                               <option value="Não">Não</option>
                                               <option value="Sim">Sim</option>
                                           </select>
@@ -393,27 +392,27 @@
 
                                       <div class="form-group">
                                           <label>Tipo de Pagamento</label>
-                                          <input type="text" class="form-control" id="tipoPagamento" name="tipoPagamento">
+                                          <input type="text" class="form-control" id="tipoPgto" name="tipoPagamento">
                                       </div>
 
                                       <div class="form-group">
                                           <label>Data Inicial</label>
-                                          <input type="date" class="form-control" id="dataInicial" name="dataInicial" required>
+                                          <input type="date" class="form-control" id="dataInicio" name="dataInicial" required>
                                       </div>
 
                                       <div class="form-group">
                                           <label>Data Final</label>
-                                          <input type="date" class="form-control" id="dataFinal" name="dataFinal" required>
+                                          <input type="date" class="form-control" id="dataFim" name="dataFinal" required>
                                       </div>
 
                                       <div class="form-group">
                                           <label>Vendedor</label>
-                                          <input type="text" class="form-control" id="vendedorNome" name="vendedorNome">
+                                          <input type="text" class="form-control" id="vendedor" name="vendedorNome">
                                       </div>
 
                                       <div class="form-group">
                                           <label>Status</label>
-                                          <select class="form-control" id="status" name="status">
+                                          <select class="form-control" id="statusAluguel" name="status">
                                               <option value="Ativo">Ativo</option>
                                               <option value="Encerrado">Encerrado</option>
                                           </select>
@@ -423,7 +422,7 @@
 
                               <div class="form-group">
                                   <label>Observação</label>
-                                  <textarea class="form-control" id="observacao" name="observacao" rows="2"></textarea>
+                                  <textarea class="form-control" id="obs" name="observacao" rows="2"></textarea>
                               </div>
                           </div>
 
@@ -441,13 +440,12 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.2.0
-    </div>
-  </footer>
+    <footer class="main-footer">
+        <strong>Escola de Engenharia de Piracicaba - 2025</strong>
+        <div class="float-right d-none d-sm-inline-block">
+            <b>Versão</b> 1.0.0
+        </div>
+    </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -498,37 +496,55 @@
 <!-- Modal Editar Cliente -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const botoesEditar = document.querySelectorAll(".btn-editar");
+     const botoesEditar = document.querySelectorAll(".btn-editar-aluguel");
 
-        botoesEditar.forEach(botao => {
-            botao.addEventListener("click", function () {
-                const id = this.dataset.id;
-                const nome = this.dataset.nome;
-                const telefone = this.dataset.telefone;
-                const cpf = this.dataset.cpf;
-                const rua = this.dataset.rua;
-                const numero = this.dataset.numero;
-                const bairro = this.dataset.bairro;
-                const cidade = this.dataset.cidade;
-                const estado = this.dataset.estado;
-                const complemento = this.dataset.complemento;
+     botoesEditar.forEach(botao => {
+         botao.addEventListener("click", function () {
+             // Pega os valores do botão
+             const {
+                 id,
+                 clienteCodigo,
+                 quantidade,
+                 dataInicial,
+                 dataFinal,
+                 produtoCodigo,
+                 valor,
+                 valorSinal,
+                 restaPagar,
+                 pagoTotal,
+                 tipoPagamento,
+                 vendedorNome,
+                 observacao,
+                 status
+             } = this.dataset;
 
-                // Preenche os campos do modal
-                document.querySelector("#modalCliente input[name='id']").value = id;
-                document.querySelector("#modalCliente input[name='nome']").value = nome;
-                document.querySelector("#modalCliente input[name='telefone']").value = telefone;
-                document.querySelector("#modalCliente input[name='cpf']").value = cpf;
-                document.querySelector("#modalCliente input[name='rua']").value = rua;
-                document.querySelector("#modalCliente input[name='numero']").value = numero;
-                document.querySelector("#modalCliente input[name='bairro']").value = bairro;
-                document.querySelector("#modalCliente input[name='cidade']").value = cidade;
-                document.querySelector("#modalCliente input[name='estado']").value = estado;
-                document.querySelector("#modalCliente input[name='complemento']").value = complemento;
+             // Preenche os campos do modal corretamente
+             const modal = document.querySelector("#modalAluguel");
 
-                $("#modalCliente").modal("show");
-            });
-        });
-    });
+             modal.querySelector("input[name='id']").value = id;
+             modal.querySelector("input[name='clienteCodigo']").value = clienteCodigo;
+             modal.querySelector("input[name='quantidade']").value = quantidade;
+             modal.querySelector("input[name='dataInicial']").value = dataInicial;
+             modal.querySelector("input[name='dataFinal']").value = dataFinal;
+             modal.querySelector("input[name='produtoCodigo']").value = produtoCodigo;
+             modal.querySelector("input[name='valor']").value = valor;
+             modal.querySelector("input[name='valorSinal']").value = valorSinal;
+             modal.querySelector("input[name='restaPagar']").value = restaPagar;
+             modal.querySelector("input[name='tipoPagamento']").value = tipoPagamento;
+             modal.querySelector("input[name='vendedorNome']").value = vendedorNome;
+
+             // Estes são <select>, não input
+             modal.querySelector("select[name='pagoTotal']").value = pagoTotal;
+             modal.querySelector("select[name='status']").value = status;
+
+             // Este é <textarea>
+             modal.querySelector("textarea[name='observacao']").value = observacao;
+
+             // Exibe o modal
+             $("#modalAluguel").modal("show");
+         });
+     });
+ });
 </script>
 </body>
 </html>
