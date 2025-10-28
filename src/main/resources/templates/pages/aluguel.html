@@ -160,7 +160,7 @@
               <li class="nav-item">
                 <a href="pages/charts/uplot.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Vendedor</p>
+                  <p>Inventário</p>
                 </a>
               </li>
             </ul>
@@ -269,17 +269,17 @@
                           <td>
                             <a href="#" class="text-warning ml-2 btn-editar-aluguel"
                             th:data-id="${aluguel.id}"
-                            th:data-clienteCodigo="${aluguel.clienteCodigo}"
+                            th:data-cliente-codigo="${aluguel.clienteCodigo}"
                             th:data-quantidade="${aluguel.quantidade}"
-                            th:data-dataInicial="${aluguel.dataInicial}"
-                            th:data-dataFinal="${aluguel.dataFinal}"
-                            th:data-produtoCodigo="${aluguel.produtoCodigo}"
+                            th:data-data-inicial="${aluguel.dataInicial}"
+                            th:data-data-final="${aluguel.dataFinal}"
+                            th:data-produto-codigo="${aluguel.produtoCodigo}"
                             th:data-valor="${aluguel.valor}"
-                            th:data-valorSinal="${aluguel.valorSinal}"
-                            th:data-restaPagar="${aluguel.restaPagar}"
-                            th:data-pagoTotal="${aluguel.pagoTotal}"
-                            th:data-tipoPagamento="${aluguel.tipoPagamento}"
-                            th:data-vendedorNome="${aluguel.vendedorNome}"
+                            th:data-valor-sinal="${aluguel.valorSinal}"
+                            th:data-resta-pagar="${aluguel.restaPagar}"
+                            th:data-pago-total="${aluguel.pagoTotal}"
+                            th:data-tipo-pagamento="${aluguel.tipoPagamento}"
+                            th:data-vendedor-nome="${aluguel.vendedorNome}"
                             th:data-observacao="${aluguel.observacao}"
                             th:data-status="${aluguel.status}">
                             <i class="fa fa-pencil-square-o"></i>
@@ -385,8 +385,8 @@
                                       <div class="form-group">
                                           <label>Pago Total</label>
                                           <select class="form-control" id="total" name="pagoTotal">
-                                              <option value="Não">Não</option>
-                                              <option value="Sim">Sim</option>
+                                              <option value="NÃO">NÃO</option>
+                                              <option value="SIM">SIM</option>
                                           </select>
                                       </div>
 
@@ -413,8 +413,8 @@
                                       <div class="form-group">
                                           <label>Status</label>
                                           <select class="form-control" id="statusAluguel" name="status">
-                                              <option value="Ativo">Ativo</option>
-                                              <option value="Encerrado">Encerrado</option>
+                                              <option value="LOCADO">LOCADO</option>
+                                              <option value="RESERVADO">RESERVADO</option>
                                           </select>
                                       </div>
                                   </div>
