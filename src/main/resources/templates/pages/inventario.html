@@ -255,7 +255,10 @@
                                         <tbody>
                                         <tr th:each="inventario : ${inventarios}">
                                             <td th:text="${inventario.id}"></td>
-                                            <td th:text="${inventario.foto}"></td>
+                                            <td>
+                                                <img th:src="@{'/' + ${inventario.foto}}" alt="Foto do produto" width="80" height="80" class="img-thumbnail">
+                                            </td>
+
                                             <td th:text="${inventario.fornecedorFantasia}"></td>
                                             <td th:text="${inventario.descricao}"></td>
                                             <td th:text="${inventario.descricaoAdicional}">A</td>
