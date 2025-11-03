@@ -32,4 +32,8 @@ public class InventarioService {
     {
         return repo.save(inventario);
     }
+    public void deletar(Integer id)
+    {
+        repo.deleteById(id);
+    }
 }
