@@ -1,10 +1,13 @@
 package com.pic3.pic3.controllers.inventario;
 
 
+import com.pic3.pic3.model.Inventario;
 import com.pic3.pic3.service.InventarioService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -24,5 +27,11 @@ public class InventarioController {
     {
         model.addAttribute("inventarios", inventarioService.listarTodos());
         return "pages/inventario";
+    }
+    @PostMapping("/salvar")
+    public String salvarInventario(@ModelAttribute Inventario inventario)
+    {
+        inventarioService.salvar(inventario);
+        return "redirect:/inventario";
     }
 }
