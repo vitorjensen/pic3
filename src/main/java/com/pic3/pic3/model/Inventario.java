@@ -53,7 +53,7 @@ public class Inventario {
     private String tipo;
 
     @Column(name = "pro_data_cadastro", nullable = false)
-    private LocalDateTime dataCadastro;
+    private LocalDateTime dataCadastro = LocalDateTime.now();
 
     // Getters e Setters
     public Integer getId() { return id; }

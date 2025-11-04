@@ -215,7 +215,7 @@
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <h3 class="card-title">Últimos cadastros:</h3>
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#modalCliente">
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#modalInventario">
                                 <i class="fas fa-plus"></i> Novo item
                             </button>
                         </div>
@@ -338,7 +338,7 @@
                 <!-- /.row -->
                 <!-- Main row -->
 
-                <div class="modal fade" id="modalInventario" tabindex="-1" role="dialog" aria-labelledby="modalClienteLabel" aria-hidden="true">
+                <div class="modal fade" id="modalInventario" tabindex="-1" role="dialog" aria-labelledby="modalInventarioLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document"> <!-- modal-lg = largura maior -->
                         <div class="modal-content">
                             <div class="modal-header">
@@ -348,62 +348,95 @@
                                 </button>
                             </div>
 
-                            <form action="/inventario/salvar" method="post">
+                            <form action="/inventario/salvar" method="post" enctype="multipart/form-data">
                                 <div class="modal-body">
-                                    <div class="row">
-                                        <!-- Coluna 1 -->
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Código</label>
-                                                <input type="text" class="form-control" id="clienteID" name="id" readonly>
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <!-- Coluna 1 -->
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="inventarioID">Código</label>
+                                                    <input type="text" class="form-control" id="inventarioID" name="id" readonly>
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label for="inventarioFoto">Foto</label>
+                                                    <input type="file" class="form-control" id="inventarioFoto" name="foto" required>
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label for="inventarioFornecedor">Fornecedor</label>
+                                                    <input type="text" class="form-control" id="inventarioFornecedor" name="fornecedorFantasia" required>
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label for="inventarioDescricao">Descrição</label>
+                                                    <input type="text" class="form-control" id="inventarioDescricao" name="descricao" required>
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label for="inventarioAdicional">Adicional</label>
+                                                    <input type="text" class="form-control" id="inventarioAdicional" name="descricaoAdicional">
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label for="inventarioTamanho">Tamanho</label>
+                                                    <input type="text" class="form-control" id="inventarioTamanho" name="tamanho">
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label for="inventarioCor">Cor</label>
+                                                    <input type="text" class="form-control" id="inventarioCor" name="cor">
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label for="inventarioTipo">Tipo</label>
+                                                    <input type="text" class="form-control" id="inventarioTipo" name="tipo">
+                                                </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label>Nome</label>
-                                                <input type="text" class="form-control" id="nomeCliente" name="nome" required>
-                                            </div>
+                                            <!-- Coluna 2 -->
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="inventarioCusto">Custo</label>
+                                                    <input type="text" class="form-control" id="inventarioCusto" name="custo">
+                                                </div>
 
-                                            <div class="form-group">
-                                                <label>Telefone</label>
-                                                <input type="text" class="form-control" id="telefoneCliente" name="telefone" required>
-                                            </div>
+                                                <div class="form-group mb-3">
+                                                    <label for="inventarioIndice">Índice</label>
+                                                    <input type="text" class="form-control" id="inventarioIndice" name="indice">
+                                                </div>
 
-                                            <div class="form-group">
-                                                <label>CPF</label>
-                                                <input type="text" class="form-control" id="cpfCliente" name="cpf" required>
-                                            </div>
+                                                <div class="form-group mb-3">
+                                                    <label for="inventarioValor">Valor</label>
+                                                    <input type="text" class="form-control" id="inventarioValor" name="valor">
+                                                </div>
 
-                                            <div class="form-group">
-                                                <label>Rua</label>
-                                                <input type="text" class="form-control" id="ruaCliente" name="rua">
-                                            </div>
-                                        </div>
+                                                <div class="form-group mb-3">
+                                                    <label for="inventarioAluguel">Aluguel</label>
+                                                    <select class="form-control" id="inventarioAluguel" name="aluguel">
+                                                        <option value="SIM">SIM</option>
+                                                        <option value="NÃO">NÃO</option>
+                                                    </select>
+                                                </div>
 
-                                        <!-- Coluna 2 -->
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Número</label>
-                                                <input type="text" class="form-control" id="numeroCliente" name="numero">
-                                            </div>
+                                                <div class="form-group mb-3">
+                                                    <label for="inventarioQuantidade">Quantidade</label>
+                                                    <input type="text" class="form-control" id="inventarioQuantidade" name="quantidade">
+                                                </div>
 
-                                            <div class="form-group">
-                                                <label>Bairro</label>
-                                                <input type="text" class="form-control" id="numeroBairro" name="bairro">
-                                            </div>
+                                                <div class="form-group mb-3">
+                                                    <label for="inventarioStatus">Status</label>
+                                                    <select class="form-control" id="inventarioStatus" name="status">
+                                                        <option value="ATIVO">ATIVO</option>
+                                                        <option value="INATIVO">INATIVO</option>
+                                                    </select>
+                                                </div>
 
-                                            <div class="form-group">
-                                                <label>Cidade</label>
-                                                <input type="text" class="form-control" id="cidadeCliente" name="cidade">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label>Estado</label>
-                                                <input type="text" class="form-control" id="cidadeEstado" name="estado">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label>Complemento</label>
-                                                <input type="text" class="form-control" id="cidadeComplemento" name="complemento">
+                                              <!--  <div class="form-group mb-3">
+                                                    <label for="inventarioData">Data de cadastro</label>
+                                                    <input type="date" class="form-control" id="inventarioData" name="dataCadastro">
+                                                </div> -->
                                             </div>
                                         </div>
                                     </div>
