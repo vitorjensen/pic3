@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
 
 @Controller
@@ -32,30 +33,47 @@ public class InventarioController {
         model.addAttribute("inventarios", inventarioService.listarTodos());
         return "pages/inventario";
     }
+
+    @GetMapping("/deletar/{id}")
+    public String deletarInventario(@PathVariable Integer id)
+    {
+        inventarioService.deletar(id);
+        return "redirect:/inventario";
+    }
+
     @PostMapping("/salvar")
-    public String salvarInventario(@RequestParam("foto") MultipartFile arquivo,
-                                   @ModelAttribute Inventario inventario) throws IOException {
+    public String salvarInventario(
+            @RequestParam("arquivoFoto") MultipartFile arquivoFoto,
+            @ModelAttribute Inventario inventario
+    ) throws IOException {
 
-        if (!arquivo.isEmpty()) {
-            // Caminho da pasta onde as fotos ficam
-            String pastaFotos = "src/main/resources/static/fotos/";
+        if (!arquivoFoto.isEmpty()) {
 
-            // Nome único (pode ser timestamp)
-            String nomeArquivo = System.currentTimeMillis() + "_" + arquivo.getOriginalFilename();
+            // Normaliza nome da foto
+            String nomeOriginal = arquivoFoto.getOriginalFilename();
+            assert nomeOriginal != null;
+            nomeOriginal = nomeOriginal.replaceAll("\\s+", "_").toLowerCase();
+            nomeOriginal = java.text.Normalizer
+                    .normalize(nomeOriginal, java.text.Normalizer.Form.NFD)
+                    .replaceAll("[^\\p{ASCII}]", "");
 
-            // Caminho completo
-            Path caminho = Paths.get(pastaFotos + nomeArquivo);
+            String nomeArquivo = System.currentTimeMillis() + "_" + nomeOriginal;
 
-            // Salva o arquivo no disco
-            Files.write(caminho, arquivo.getBytes());
+            // Caminho onde a foto será salva (STATIC)
+            Path caminho = Paths.get("src/main/resources/static/fotos/" + nomeArquivo);
 
-            // Armazena o caminho relativo no banco
+            // Salva o arquivo
+            Files.copy(arquivoFoto.getInputStream(), caminho, StandardCopyOption.REPLACE_EXISTING);
+
+            // Guarda o caminho relativo no banco
             inventario.setFoto("fotos/" + nomeArquivo);
         }
 
         inventario.setDataCadastro(LocalDateTime.now());
+
         inventarioService.salvar(inventario);
         return "redirect:/inventario";
     }
+
 
 }

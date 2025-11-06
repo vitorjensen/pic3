@@ -256,7 +256,11 @@
                                         <tr th:each="inventario : ${inventarios}">
                                             <td th:text="${inventario.id}"></td>
                                             <td>
-                                                <img th:src="@{'/' + ${inventario.foto}}" alt="Foto do produto" width="80" height="80" class="img-thumbnail">
+                                                <img th:src="@{'/' + ${inventario.foto}}"
+                                                     alt="Foto do produto"
+                                                     width="55"
+                                                     height="55"
+                                                     class="img-thumbnail">
                                             </td>
 
                                             <td th:text="${inventario.fornecedorFantasia}"></td>
@@ -361,7 +365,7 @@
 
                                                 <div class="form-group mb-3">
                                                     <label for="inventarioFoto">Foto</label>
-                                                    <input type="file" class="form-control" id="inventarioFoto" name="foto" required>
+                                                    <input type="file" class="form-control" id="inventarioFoto" name="arquivoFoto" required>
                                                 </div>
 
                                                 <div class="form-group mb-3">
