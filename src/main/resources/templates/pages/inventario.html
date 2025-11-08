@@ -513,29 +513,37 @@
         botoesEditar.forEach(botao => {
             botao.addEventListener("click", function () {
                 const id = this.dataset.id;
-                const nome = this.dataset.nome;
-                const telefone = this.dataset.telefone;
-                const cpf = this.dataset.cpf;
-                const rua = this.dataset.rua;
-                const numero = this.dataset.numero;
-                const bairro = this.dataset.bairro;
-                const cidade = this.dataset.cidade;
-                const estado = this.dataset.estado;
-                const complemento = this.dataset.complemento;
+                const foto = this.dataset.foto;
+                const fornecedorFantasia = this.dataset.fornecedorFantasia;
+                const descricao = this.dataset.descricao;
+                const descricaoAdicional = this.dataset.descricaoAdicional;
+                const tamanho = this.dataset.tamanho;
+                const cor = this.dataset.cor;
+                const tipo = this.dataset.tipo;
+                const custo = this.dataset.custo;
+                const indice = this.dataset.indice;
+                const valor = this.dataset.valor;
+                const aluguel = this.dataset.aluguel;
+                const quantidade = this.dataset.quantidade;
+                const status = this.dataset.status;
 
                 // Preenche os campos do modal
-                document.querySelector("#modalCliente input[name='id']").value = id;
-                document.querySelector("#modalCliente input[name='nome']").value = nome;
-                document.querySelector("#modalCliente input[name='telefone']").value = telefone;
-                document.querySelector("#modalCliente input[name='cpf']").value = cpf;
-                document.querySelector("#modalCliente input[name='rua']").value = rua;
-                document.querySelector("#modalCliente input[name='numero']").value = numero;
-                document.querySelector("#modalCliente input[name='bairro']").value = bairro;
-                document.querySelector("#modalCliente input[name='cidade']").value = cidade;
-                document.querySelector("#modalCliente input[name='estado']").value = estado;
-                document.querySelector("#modalCliente input[name='complemento']").value = complemento;
+                document.querySelector("#modalInventario input[name='id']").value = id;
+                document.querySelector("#modalInventario input[name='arquivoFoto']").value = arquivoFoto;
+                document.querySelector("#modalInventario input[name='fornecedorFantasia']").value = fornecedorFantasia;
+                document.querySelector("#modalInventario input[name='descricao']").value = descricao;
+                document.querySelector("#modalInventario input[name='descricaoAdicional']").value = descricaoAdicional;
+                document.querySelector("#modalInventario input[name='tamanho']").value = tamanho;
+                document.querySelector("#modalInventario input[name='cor']").value = cor;
+                document.querySelector("#modalInventario input[name='tipo']").value = tipo;
+                document.querySelector("#modalInventario input[name='custo']").value = custo;
+                document.querySelector("#modalInventario input[name='indice']").value = indice;
+                document.querySelector("#modalInventario input[name='valor']").value = valor;
+                document.querySelector("#modalInventario select[name='aluguel']").value = aluguel;
+                document.querySelector("#modalInventario input[name='quantidade']").value = quantidade;
+                document.querySelector("#modalInventario select[name='status']").value = status;
 
-                $("#modalCliente").modal("show");
+                $("#modalInventario").modal("show");
             });
         });
     });
