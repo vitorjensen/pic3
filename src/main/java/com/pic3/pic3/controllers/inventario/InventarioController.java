@@ -41,6 +41,12 @@ public class InventarioController {
         return "redirect:/inventario";
     }
 
+    @PostMapping("/inventario/editar")
+            public String editarInventario(Inventario inventario)
+    {
+        inventarioService.salvar(inventario);
+        return "redirect:/inventario";
+    }
     @PostMapping("/salvar")
     public String salvarInventario(
             @RequestParam("arquivoFoto") MultipartFile arquivoFoto,

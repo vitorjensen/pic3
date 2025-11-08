@@ -25,11 +25,13 @@ public class InventarioService {
 
     public Optional<Inventario> buscarPorId(Integer id)
     {
-    return repo.findById(id);
+
+        return repo.findById(id);
     }
 
     public Inventario salvar(Inventario inventario)
     {
+
         return repo.save(inventario);
     }
 
@@ -37,5 +39,29 @@ public class InventarioService {
     {
 
         repo.deleteById(id);
+    }
+
+    public Inventario atualizar(Integer id, Inventario inventarioAtualizado)
+    {
+        return repo.findById(id)
+                .map(inventario -> {
+                    inventario.setId(inventarioAtualizado.getId());
+                    inventario.setFoto(inventarioAtualizado.getFoto());
+                    inventario.setFornecedorFantasia(inventarioAtualizado.getFornecedorFantasia());
+                    inventario.setDescricao(inventarioAtualizado.getDescricao());
+                    inventario.setDescricaoAdicional(inventarioAtualizado.getDescricaoAdicional());
+                    inventario.setTamanho(inventarioAtualizado.getTamanho());
+                    inventario.setCor(inventarioAtualizado.getCor());
+                    inventario.setTipo(inventarioAtualizado.getTipo());
+                    inventario.setCusto(inventarioAtualizado.getCusto());
+                    inventario.setIndice(inventarioAtualizado.getIndice());
+                    inventario.setValor(inventarioAtualizado.getValor());
+                    inventario.setAluguel(inventarioAtualizado.getAluguel());
+                    inventario.setQuantidade(inventarioAtualizado.getQuantidade());
+                    inventario.setStatus(inventarioAtualizado.getStatus());
+                    return repo.save(inventario);
+                })
+                .orElseThrow(() -> new RuntimeException("Item não encontrado com o ID " + id));
+
     }
 }
