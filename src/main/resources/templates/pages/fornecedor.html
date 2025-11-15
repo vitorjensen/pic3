@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <title>Cliente</title>
+  <title>Fornecedor</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -136,7 +136,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/cliente" class="nav-link active">
+                <a href="/cliente" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Clientes</p>
                 </a>
@@ -148,7 +148,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/inline.html" class="nav-link">
+                <a href="/fornecedor" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Fornecedor</p>
                 </a>
@@ -243,33 +243,35 @@
                       </tr>
                       </thead>
                       <tbody>
-                      <tr th:each="cliente : ${clientes}">
-                          <td th:text="${cliente.id}"></td>
-                          <td th:text="${cliente.nome}"></td>
-                          <td th:text="${cliente.telefone}"></td>
-                          <td th:text="${cliente.cpf}"></td>
-                          <td th:text="${cliente.rua}">A</td>
-                          <td th:text="${cliente.numero}">A</td>
-                          <td th:text="${cliente.bairro}">A</td>
-                          <td th:text="${cliente.cidade}">A</td>
-                          <td th:text="${cliente.estado}">A</td>
-                          <td th:text="${cliente.complemento}">A</td>
+                      <tr th:each="fornecedor : ${fornecedores}">
+                          <td th:text="${fornecedor.id}"></td>
+                          <td th:text="${fornecedor.pessoa}"></td>
+                          <td th:text="${fornecedor.cnpj}"></td>
+                          <td th:text="${fornecedor.razao}"></td>
+                          <td th:text="${fornecedor.fantasia}">A</td>
+                          <td th:text="${fornecedor.endereco}">A</td>
+                          <td th:text="${fornecedor.numero}">A</td>
+                          <td th:text="${fornecedor.cidade}">A</td>
+                          <td th:text="${fornecedor.estado}">A</td>
+                          <td th:text="${fornecedor.telefone}">A</td>
+                          <td th:text="${fornecedor.dataCadastro}">A</td>
                           <td>
                             <a href="#" class="text-warning ml-2 btn-editar"
-                            th:data-id="${cliente.id}"
-                            th:data-nome="${cliente.nome}"
-                            th:data-telefone="${cliente.telefone}"
-                            th:data-cpf="${cliente.cpf}"
-                            th:data-rua="${cliente.rua}"
-                            th:data-numero="${cliente.numero}"
-                            th:data-bairro="${cliente.bairro}"
-                            th:data-cidade="${cliente.cidade}"
-                            th:data-estado="${cliente.estado}"
-                            th:data-complemento="${cliente.complemento}">
+                            th:data-id="${fornecedor.id}"
+                            th:data-pessoa="${fornecedor.pessoa}"
+                            th:data-cnpj="${fornecedor.cnpj}"
+                            th:data-razao="${fornecedor.razao}"
+                            th:data-fantasia="${fornecedor.fantasia}"
+                            th:data-endereco="${fornecedor.endereco}"
+                            th:data-numero="${fornecedor.numero}"
+                            th:data-cidade="${fornecedor.cidade}"
+                            th:data-estado="${fornecedor.estado}"
+                            th:data-telefone="${fornecedor.telefone}"
+                            th:data-cadastro="${fornecedor.dataCadastro}">
                             <i class="fa fa-pencil-square-o"></i>
                             </a>
 
-                            <a th:href="@{'/cliente/deletar/' + ${cliente.id}}"
+                            <a th:href="@{'/fornecedor/deletar/' + ${fornecedor.id}}"
                             class="text-danger ml-2"
                             onclick="return confirm('Tem certeza que deseja excluir este cliente?');">
                             <i class="fa fa-trash"></i>
@@ -315,7 +317,7 @@
         <!-- /.row -->
         <!-- Main row -->
 
-          <div class="modal fade" id="modalFornecedor" tabindex="-1" role="dialog" aria-labelledby="modalClFornecedorLabel" aria-hidden="true">
+          <div class="modal fade" id="modalFornecedor" tabindex="-1" role="dialog" aria-labelledby="modalFornecedorLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg" role="document"> <!-- modal-lg = largura maior -->
                   <div class="modal-content">
                       <div class="modal-header">
