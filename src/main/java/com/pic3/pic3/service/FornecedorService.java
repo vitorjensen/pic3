@@ -5,6 +5,7 @@ import com.pic3.pic3.repository.FornecedorRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -18,6 +19,11 @@ public class FornecedorService {
     public List<Fornecedor> listarTodos()
     {
         return repo.findAll();
+    }
+
+    public Optional<Fornecedor> buscaPorId(Integer id)
+    {
+        return repo.findById(id);
     }
 
     public Fornecedor salvar(Fornecedor fornecedor)
@@ -41,7 +47,7 @@ public class FornecedorService {
                     fornecedor.setDataCadastro(fornecedorAtualizado.getDataCadastro());
                     return repo.save(fornecedor);
                 })
-                .orElseThrow(() -> new RuntimeException("Cliente não encontrado com ID " + id));
+                .orElseThrow(() -> new RuntimeException("Fornecedor não encontrado com ID " + id));
     }
 
     public void deletar(Integer id) {

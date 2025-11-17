@@ -1,8 +1,6 @@
 package com.pic3.pic3.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.time.LocalDateTime;
 
@@ -11,8 +9,6 @@ import java.time.LocalDateTime;
 @Table(name = "tb_fornecedor")
 public class Fornecedor {
 
-    @Setter
-    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "for_codigo")
@@ -48,4 +44,10 @@ public class Fornecedor {
     @Column(name = "for_data_cadastro", nullable = false)
     private LocalDateTime dataCadastro = LocalDateTime.now();
 
+    public Fornecedor(){}
+    public Integer getId() { return id; }
+    public void setId(Integer id){this.id = id;}
+
+    public String getPessoa(){ return pessoa; }
+    public void setPessoa(String pessoa){ this.pessoa = pessoa; }
 }
