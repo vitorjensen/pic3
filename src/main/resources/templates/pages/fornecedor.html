@@ -230,15 +230,15 @@
                       <thead>
                       <tr>
                           <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Código</th>
-                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Nome</th>
-                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Telefone</th>
-                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">CPF</th>
-                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Rua</th>
-                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Número</th>
-                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Bairro</th>
+                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Pessoa</th>
+                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">CNPJ</th>
+                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Razão</th>
+                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Fantasia</th>
+                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Endereço</th>
+                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Numero</th>
                           <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Cidade</th>
                           <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Estado</th>
-                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Complemento</th>
+                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Telefone</th>
                           <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Data de Cadastro</th>
                           <th>Ações</th>
                       </tr>
@@ -322,68 +322,76 @@
               <div class="modal-dialog modal-lg" role="document"> <!-- modal-lg = largura maior -->
                   <div class="modal-content">
                       <div class="modal-header">
-                          <h5 class="modal-title">Cadastrar Cliente</h5>
+                          <h5 class="modal-title">Cadastrar Fornecedor</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                           </button>
                       </div>
 
-                      <form action="/cliente/salvar" method="post">
+                      <form action="/fornecedor/salvar" method="post">
                           <div class="modal-body">
                               <div class="row">
                                   <!-- Coluna 1 -->
                                   <div class="col-md-6">
                                       <div class="form-group">
                                           <label>Código</label>
-                                          <input type="text" class="form-control" id="clienteID" name="id" readonly>
+                                          <input type="text" class="form-control" id="fornecedorID" name="id" readonly>
                                       </div>
 
                                       <div class="form-group">
-                                          <label>Nome</label>
-                                          <input type="text" class="form-control" id="nomeCliente" name="nome" required>
+                                          <label>Pessoa</label>
+                                          <select class="form-control" id="fornecedorPessoa" name="pessoa">
+                                              <option value="Jurídica">Jurídica</option>
+                                              <option value="Física">Física</option>
+                                          </select>
                                       </div>
 
                                       <div class="form-group">
-                                          <label>Telefone</label>
-                                          <input type="text" class="form-control" id="telefoneCliente" name="telefone" required>
+                                          <label>CNPJ</label>
+                                          <input type="text" class="form-control" id="fornecedorCnpj" name="cnpj" required>
                                       </div>
 
                                       <div class="form-group">
-                                          <label>CPF</label>
-                                          <input type="text" class="form-control" id="cpfCliente" name="cpf" required>
+                                          <label>Razão</label>
+                                          <input type="text" class="form-control" id="fornecedorRazao" name="razao" required>
                                       </div>
 
                                       <div class="form-group">
-                                          <label>Rua</label>
-                                          <input type="text" class="form-control" id="ruaCliente" name="rua">
+                                          <label>Fantasia</label>
+                                          <input type="text" class="form-control" id="fornecedorFantasia" name="fantasia">
                                       </div>
                                   </div>
 
                                   <!-- Coluna 2 -->
                                   <div class="col-md-6">
                                       <div class="form-group">
-                                          <label>Número</label>
-                                          <input type="text" class="form-control" id="numeroCliente" name="numero">
+                                          <label>Endereço</label>
+                                          <input type="text" class="form-control" id="fornecedorEndereco" name="endereco">
                                       </div>
 
                                       <div class="form-group">
-                                          <label>Bairro</label>
-                                          <input type="text" class="form-control" id="numeroBairro" name="bairro">
+                                          <label>Número</label>
+                                          <input type="text" class="form-control" id="fornecedorNumero" name="numero">
                                       </div>
 
                                       <div class="form-group">
                                           <label>Cidade</label>
-                                          <input type="text" class="form-control" id="cidadeCliente" name="cidade">
+                                          <input type="text" class="form-control" id="fornecedorCidade" name="cidade">
                                       </div>
 
                                       <div class="form-group">
                                           <label>Estado</label>
-                                          <input type="text" class="form-control" id="cidadeEstado" name="estado">
+                                          <input type="text" class="form-control" id="fornecedorEstado" name="estado">
                                       </div>
 
                                       <div class="form-group">
-                                          <label>Complemento</label>
-                                          <input type="text" class="form-control" id="cidadeComplemento" name="complemento">
+                                          <label>Telefone</label>
+                                          <input type="text" class="form-control" id="fornecedorTelefone" name="telefone">
+                                      </div>
+
+                                     <div class="form-group">
+                                          <label>Data de Cadastro</label>
+                                          <input type="date" class="form-control" id="data" name="dataCadastro">
                                       </div>
                                   </div>
                               </div>
@@ -462,29 +470,30 @@
         botoesEditar.forEach(botao => {
             botao.addEventListener("click", function () {
                 const id = this.dataset.id;
-                const nome = this.dataset.nome;
-                const telefone = this.dataset.telefone;
-                const cpf = this.dataset.cpf;
-                const rua = this.dataset.rua;
+                const pessoa = this.dataset.pessoa;
+                const cnpj = this.dataset.cnpj;
+                const razao = this.dataset.razao;
+                const fantasia = this.dataset.fantasia;
+                const endereco = this.dataset.endereco;
                 const numero = this.dataset.numero;
-                const bairro = this.dataset.bairro;
                 const cidade = this.dataset.cidade;
                 const estado = this.dataset.estado;
-                const complemento = this.dataset.complemento;
+                const telefone = this.dataset.telefone;
+                const dataCadastro = this.dataset.dataCadastro;
 
                 // Preenche os campos do modal
-                document.querySelector("#modalCliente input[name='id']").value = id;
-                document.querySelector("#modalCliente input[name='nome']").value = nome;
-                document.querySelector("#modalCliente input[name='telefone']").value = telefone;
-                document.querySelector("#modalCliente input[name='cpf']").value = cpf;
-                document.querySelector("#modalCliente input[name='rua']").value = rua;
-                document.querySelector("#modalCliente input[name='numero']").value = numero;
-                document.querySelector("#modalCliente input[name='bairro']").value = bairro;
-                document.querySelector("#modalCliente input[name='cidade']").value = cidade;
-                document.querySelector("#modalCliente input[name='estado']").value = estado;
-                document.querySelector("#modalCliente input[name='complemento']").value = complemento;
-
-                $("#modalCliente").modal("show");
+                document.querySelector("#modalFornecedor input[name='id']").value = id;
+                document.querySelector("#modalFornecedor select[name='pessoa']").value = pessoa;
+                document.querySelector("#modalFornecedor input[name='cnpj']").value = cnpj;
+                document.querySelector("#modalFornecedor input[name='razao']").value = razao;
+                document.querySelector("#modalFornecedor input[name='fantasia']").value = fantasia;
+                document.querySelector("#modalFornecedor input[name='endereco']").value = endereco;
+                document.querySelector("#modalFornecedor input[name='numero']").value = numero;
+                document.querySelector("#modalFornecedor input[name='cidade']").value = cidade;
+                document.querySelector("#modalFornecedor input[name='estado']").value = estado;
+                document.querySelector("#modalFornecedor input[name='telefone']").value = telefone;
+                document.querySelector("#modalFornecedor input[name='dataCadastro']").value = dataCadastro;
+                $("#modalFornecedor").modal("show");
             });
         });
     });

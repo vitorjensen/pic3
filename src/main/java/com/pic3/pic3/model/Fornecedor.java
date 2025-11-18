@@ -3,7 +3,6 @@ package com.pic3.pic3.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 
 @Entity
@@ -43,7 +42,7 @@ public class Fornecedor {
     private String telefone;
 
     @Column(name = "for_data_cadastro", nullable = false)
-    private LocalDateTime dataCadastro = LocalDateTime.now();
+    private LocalDate dataCadastro = LocalDate.now();
 
     public Fornecedor(){}
     public Integer getId() { return id; }
@@ -76,6 +75,6 @@ public class Fornecedor {
     public String getTelefone(){ return telefone; }
     public void setTelefone(String telefone){ this.telefone = telefone; }
 
-    public LocalDateTime getDataCadastro(){ return dataCadastro; }
-    public void setDataCadastro(LocalDateTime dataCadastro){ this.dataCadastro = dataCadastro; }
+    public LocalDate getDataCadastro(){ return dataCadastro; }
+    public void setDataCadastro(LocalDate dataCadastro){ this.dataCadastro = dataCadastro; }
 }
