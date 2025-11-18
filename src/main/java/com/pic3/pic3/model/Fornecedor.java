@@ -2,6 +2,7 @@ package com.pic3.pic3.model;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 
@@ -50,4 +51,31 @@ public class Fornecedor {
 
     public String getPessoa(){ return pessoa; }
     public void setPessoa(String pessoa){ this.pessoa = pessoa; }
+
+    public String getCnpj(){ return cnpj; }
+    public void setCnpj(String cnpj){ this.cnpj = cnpj; }
+
+    public String getRazao(){ return razao; }
+    public void setRazao(String razao){ this.razao = razao; }
+
+    public String getFantasia() { return fantasia; }
+    public void setFantasia(String fantasia){ this.fantasia = fantasia; }
+
+    public String getEndereco() { return endereco; }
+    public void setEndereco(String endereco){ this.endereco = endereco; }
+
+    public String getNumero(){ return numero; }
+    public void setNumero(String numero){ this.numero = numero; }
+
+    public String getCidade(){ return cidade; }
+    public void setCidade(String cidade){ this.cidade = cidade; }
+
+    public String getEstado(){ return estado; }
+    public  void setEstado(String estado){ this.estado = estado; }
+
+    public String getTelefone(){ return telefone; }
+    public void setTelefone(String telefone){ this.telefone = telefone; }
+
+    public LocalDateTime getDataCadastro(){ return dataCadastro; }
+    public void setDataCadastro(LocalDateTime dataCadastro){ this.dataCadastro = dataCadastro; }
 }
