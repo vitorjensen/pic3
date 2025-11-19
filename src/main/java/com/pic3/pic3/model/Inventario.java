@@ -2,7 +2,7 @@ package com.pic3.pic3.model;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "tb_produto")
@@ -53,7 +53,7 @@ public class Inventario {
     private String tipo;
 
     @Column(name = "pro_data_cadastro", nullable = false)
-    private LocalDateTime dataCadastro = LocalDateTime.now();
+    private LocalDate dataCadastro = LocalDate.now();
 
     // Getters e Setters
     public Integer getId() { return id; }
@@ -98,6 +98,7 @@ public class Inventario {
     public String getTipo() { return tipo; }
     public void setTipo(String tipo) { this.tipo = tipo; }
 
-    public LocalDateTime getDataCadastro() { return dataCadastro; }
-    public void setDataCadastro(LocalDateTime dataCadastro) { this.dataCadastro = dataCadastro; }
+    public LocalDate getDataCadastro() { return dataCadastro; }
+    public void setDataCadastro(LocalDate dataCadastro) { this.dataCadastro = dataCadastro; }
+
 }

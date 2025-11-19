@@ -1,11 +1,12 @@
 package com.pic3.pic3.controllers.fornecedor;
 
-import com.pic3.pic3.model.Cliente;
 import com.pic3.pic3.model.Fornecedor;
-import org.springframework.ui.Model;
 import com.pic3.pic3.service.FornecedorService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
 
 
 @Controller
@@ -29,8 +30,12 @@ public class FornecedorController {
 @PostMapping("/salvar")
     public String salvarFornecedor(@ModelAttribute Fornecedor fornecedor)
 {
+    fornecedor.setDataCadastro(LocalDate.now());
     fornecedorService.salvar(fornecedor);
+
     return "redirect:/fornecedor";
+
+
 }
 
 @GetMapping("/deletar/{id}")

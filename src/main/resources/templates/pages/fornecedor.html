@@ -268,7 +268,7 @@
                             th:data-cidade="${fornecedor.cidade}"
                             th:data-estado="${fornecedor.estado}"
                             th:data-telefone="${fornecedor.telefone}"
-                            th:data-cadastro="${fornecedor.dataCadastro}">
+                            th:data-dataCadastro="${fornecedor.dataCadastro}">
                             <i class="fa fa-pencil-square-o"></i>
                             </a>
 
@@ -388,11 +388,6 @@
                                           <label>Telefone</label>
                                           <input type="text" class="form-control" id="fornecedorTelefone" name="telefone">
                                       </div>
-
-                                     <div class="form-group">
-                                          <label>Data de Cadastro</label>
-                                          <input type="date" class="form-control" id="data" name="dataCadastro">
-                                      </div>
                                   </div>
                               </div>
                           </div>
@@ -479,7 +474,6 @@
                 const cidade = this.dataset.cidade;
                 const estado = this.dataset.estado;
                 const telefone = this.dataset.telefone;
-                const dataCadastro = this.dataset.dataCadastro;
 
                 // Preenche os campos do modal
                 document.querySelector("#modalFornecedor input[name='id']").value = id;
@@ -492,7 +486,6 @@
                 document.querySelector("#modalFornecedor input[name='cidade']").value = cidade;
                 document.querySelector("#modalFornecedor input[name='estado']").value = estado;
                 document.querySelector("#modalFornecedor input[name='telefone']").value = telefone;
-                document.querySelector("#modalFornecedor input[name='dataCadastro']").value = dataCadastro;
                 $("#modalFornecedor").modal("show");
             });
         });

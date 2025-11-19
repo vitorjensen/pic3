@@ -13,6 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Controller
@@ -75,7 +76,7 @@ public class InventarioController {
             inventario.setFoto("fotos/" + nomeArquivo);
         }
 
-        inventario.setDataCadastro(LocalDateTime.now());
+        inventario.setDataCadastro(LocalDate.now());
 
         inventarioService.salvar(inventario);
         return "redirect:/inventario";

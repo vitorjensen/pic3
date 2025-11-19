@@ -31,23 +31,22 @@ public class FornecedorService {
         return repo.save(fornecedor);
     }
 
-    public Fornecedor atualizar(Integer id, Fornecedor fornecedorAtualizado)
-    {
+   public Fornecedor atualizar(Integer id, Fornecedor fornecedorAtualizado)
+  {
         return repo.findById(id)
                 .map(fornecedor -> {
                     fornecedor.setPessoa(fornecedorAtualizado.getPessoa());
                     fornecedor.setCnpj(fornecedorAtualizado.getCnpj());
                     fornecedor.setRazao(fornecedorAtualizado.getRazao());
-                    fornecedor.setFantasia(fornecedorAtualizado.getFantasia());
-                    fornecedor.setEndereco(fornecedorAtualizado.getEndereco());
+                     fornecedor.setFantasia(fornecedorAtualizado.getFantasia());
+                     fornecedor.setEndereco(fornecedorAtualizado.getEndereco());
                     fornecedor.setNumero(fornecedorAtualizado.getNumero());
                     fornecedor.setCidade(fornecedorAtualizado.getCidade());
-                    fornecedor.setEstado(fornecedorAtualizado.getEstado());
-                    fornecedor.setTelefone(fornecedorAtualizado.getTelefone());
-                    fornecedor.setDataCadastro(fornecedorAtualizado.getDataCadastro());
+                     fornecedor.setEstado(fornecedorAtualizado.getEstado());
+                      fornecedor.setTelefone(fornecedorAtualizado.getTelefone());
                     return repo.save(fornecedor);
                 })
-                .orElseThrow(() -> new RuntimeException("Fornecedor não encontrado com ID " + id));
+               .orElseThrow(() -> new RuntimeException("Fornecedor não encontrado com ID " + id));
     }
 
     public void deletar(Integer id) {
