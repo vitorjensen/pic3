@@ -7,6 +7,8 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "tb_fornecedor")
+
+// --- Classe criada para o Modelo de Fornecedor declarando seus seus atributos ---
 public class Fornecedor {
 
     @Id
@@ -44,6 +46,7 @@ public class Fornecedor {
     @Column(name = "for_data_cadastro", nullable = false)
     private LocalDate dataCadastro = LocalDate.now();
 
+    // --- GETTERS e SETTERS de FORNECEDOR ---
     public Fornecedor(){}
     public Integer getId() { return id; }
     public void setId(Integer id){this.id = id;}

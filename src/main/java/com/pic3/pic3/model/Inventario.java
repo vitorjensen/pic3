@@ -6,6 +6,8 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "tb_produto")
+
+// --- Classe criada para o Modelo de Inventario declarando seus seus atributos ---
 public class Inventario {
 
     @Id
@@ -55,7 +57,7 @@ public class Inventario {
     @Column(name = "pro_data_cadastro", nullable = false)
     private LocalDate dataCadastro = LocalDate.now();
 
-    // Getters e Setters
+    // --- GETTERS e SETTERS de INVENTARIO ---
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
 

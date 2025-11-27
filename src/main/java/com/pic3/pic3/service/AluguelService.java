@@ -8,13 +8,14 @@ import java.util.List;
 
 @Service
 public class AluguelService {
-
+    // --- Criando o atributo "repo" para importar o Repository de Cliente ---
     private final AluguelRepository aluguelRepository;
 
     public AluguelService(AluguelRepository aluguelRepository)
     {
         this.aluguelRepository = aluguelRepository;
     }
+    // --- Declarando as funções CRUD para o sistema ---
     public List<Aluguel> listarTodos()
     {
         return aluguelRepository.findAll();

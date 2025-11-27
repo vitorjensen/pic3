@@ -10,12 +10,13 @@ import java.util.Optional;
 
 @Service
 public class FornecedorService {
+    // --- Criando o atributo "repo" para importar o Repository de Cliente ---
     private final FornecedorRepository repo;
 
     public FornecedorService(FornecedorRepository repo){
         this.repo = repo;
     }
-
+    // --- Declarando as funções CRUD para o sistema ---
     public List<Fornecedor> listarTodos()
     {
         return repo.findAll();

@@ -35,6 +35,7 @@ public class InventarioController {
         return "pages/inventario";
     }
 
+    // --- Criando as rotas para suas respectivas funções de CRUD ---
     @GetMapping("/deletar/{id}")
     public String deletarInventario(@PathVariable Integer id)
     {

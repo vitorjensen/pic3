@@ -27,6 +27,7 @@ public class FornecedorController {
     return  "pages/fornecedor";
     }
 
+    // --- Criando as rotas para suas respectivas funções de CRUD ---
 @PostMapping("/salvar")
     public String salvarFornecedor(@ModelAttribute Fornecedor fornecedor)
 {

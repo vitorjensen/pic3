@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Service
 public class InventarioService {
-
+    // --- Criando o atributo "repo" para importar o Repository de Cliente ---
     private final InventarioRepository repo;
 
     public InventarioService(InventarioRepository repo)
@@ -17,6 +17,7 @@ public class InventarioService {
         this.repo = repo;
     }
 
+    // --- Declarando as funções CRUD para o sistema ---
     public List<Inventario> listarTodos()
     {
 

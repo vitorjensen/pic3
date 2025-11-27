@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "tb_cliente")
+
+// --- Classe criada para o Modelo de Cliente declarando seus seus atributos ---
 public class Cliente {
 
     @Id
@@ -38,6 +40,7 @@ public class Cliente {
     @Column(name = "cli_complemento", nullable = false)
     private String complemento;
 
+    // --- GETTERS e SETTERS de CLIENTE ---
     public Cliente(){}
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }

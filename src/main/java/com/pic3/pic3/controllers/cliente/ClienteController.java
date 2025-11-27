@@ -25,7 +25,7 @@ public class ClienteController {
         model.addAttribute("clientes", clienteService.listarTodos());
         return "pages/cliente";
     }
-
+    // --- Criando as rotas para suas respectivas funções de CRUD ---
     @PostMapping("/salvar")
     public String salvarCliente(@ModelAttribute Cliente cliente)
     {

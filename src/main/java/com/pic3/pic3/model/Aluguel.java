@@ -9,6 +9,8 @@ import java.time.LocalDate;
 @Setter
 @Entity
 @Table(name = "tb_aluguel")
+
+// --- Classe criada para o Modelo de Aluguel declarando seus seus atributos ---
 public class Aluguel {
 
     @Id
@@ -55,7 +57,7 @@ public class Aluguel {
     @Column(name = "alu_qtde")
     private Integer quantidade;
 
-    // --- GETTERS e SETTERS ---
+    // --- GETTERS e SETTERS de ALUGUEL ---
 
     public Integer getId() {
         return id;

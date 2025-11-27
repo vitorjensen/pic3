@@ -10,14 +10,14 @@ import java.util.Optional;
 
 @Service
 public class ClienteService {
-
+    // --- Criando o atributo "repo" para importar o Repository de Cliente ---
     private final ClienteRepository repo;
 
     public ClienteService(ClienteRepository repo)
     {
         this.repo = repo;
     }
-
+    // --- Declarando as funções CRUD para o sistema ---
     public List<Cliente> listarTodos()
     {
 

@@ -25,7 +25,7 @@ public class AluguelController {
         model.addAttribute("alugueis", aluguelService.listarTodos());
         return "pages/aluguel";
     }
-
+    // --- Criando as rotas para suas respectivas funções de CRUD ---
     @PostMapping("/salvar")
     public String salvarAluguel(@ModelAttribute Aluguel aluguel)
     {
